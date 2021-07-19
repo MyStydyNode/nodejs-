@@ -1,0 +1,20 @@
+@url = http://localhost:3001/api
+@json = Content-Type: application/json
+
+### 所有用户
+GET {{url}}/users
+### 注册
+POST {{url}}/register
+{{json}}
+
+{
+  "userName":"user",
+  "passWord":"1111"
+}
+### 登录
+POST {{url}}/login
+{{json}}
+
+### 删除
+# DELETE  {{url}}/register/60f5853c3614a81f7cd0d1bd
+

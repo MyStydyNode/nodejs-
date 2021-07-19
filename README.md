@@ -44,3 +44,29 @@
   ```sh
   $ nodemon server
   ```
+
+##### 注册密码加密
+
+- bcrypt的散列加密
+
+  - 安装bcrypt
+
+    ```sh
+    $ npm i bcrypt
+    ```
+
+  - 使用bcrypt
+
+    ```js
+    passWord: {
+      type: String,
+      //设置密码保密性
+      set (val) {
+        // return val //默认传值且只能写同步方法
+        return require('bcrypt').hashSync(val)
+      }
+    },
+    ```
+
+    
+

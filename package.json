@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/lyxlwz/nodejs-#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "express": "^5.0.0-alpha.8",
     "mongoose": "^5.13.3"
   }
