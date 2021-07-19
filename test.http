@@ -9,11 +9,27 @@ POST {{url}}/register
 
 {
   "userName":"user",
-  "passWord":"1111"
+  "password":"1111"
 }
 ### 登录
 POST {{url}}/login
 {{json}}
+
+{
+  "userName":"user",
+  "password":"1111"
+}
+### 用户名正确，密码正确
+# {
+#   "userName":"user",
+#   "password":"11111"
+# }
+### 用户名正确，返回数据正确
+# {
+#   "userName":"user1",
+#   "password":"11111"
+# }
+### 用户名不正确，没有返回数据
 
 ### 删除
 # DELETE  {{url}}/register/60f5853c3614a81f7cd0d1bd

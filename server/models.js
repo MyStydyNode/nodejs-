@@ -11,8 +11,8 @@ const UserSchema = new mongoose.Schema({
   // userName: String,
   // unique -设置唯一性
   userName: { type: String, unique: true },
-  // passWord: String,
-  passWord: {
+  // password: String,
+  password: {
     type: String,
     //设置密码保密性
     set (val) {
