@@ -2,6 +2,8 @@ const { User } = require('./models')
 
 const express = require('express')
 
+const SECRET = 'sdadasdsd343424234gffgf'
+
 const app = express()
 
 app.use(express.json())
@@ -51,7 +53,23 @@ app.post('/api/login', async (req, res) => {
       message: '密码不正确'
     })
   }
-  res.send(user)
+  // res.send(user)
+  // 生成token
+  const jwt = require('jsonwebtoken')
+  /**
+   * 进行签名
+   * payload 表示进行操作的数据是什么,secretOrPrivateKey 表示密钥
+   * function sign(payload: string | object | Buffer, secretOrPrivateKey: Secret, options?: SignOptions)
+   * 一般生成的token 告诉服务端签发的token在我们数据库对应的是哪个用户，所有一般最简单的用用户id就可以了
+   * 可以通过id 去寻找数据库中是否存在这个用户
+   */
+  const token = jwt.sign({
+    id: String(user._id),
+  }, SECRET)
+  res.send({
+    user,
+    token,
+  })
 })
 
 // app.delete('/api/register/:id', async (req, res) => {
