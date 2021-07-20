@@ -34,3 +34,8 @@ POST {{url}}/login
 ### 删除
 # DELETE  {{url}}/register/60f5853c3614a81f7cd0d1bd
 
+### 个人信息
+### 前提是必须传token,才能知道是谁 
+GET {{url}}/profile
+# Authorization: Bearer 1eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZjU5NWExM2E2YzJiMGY3NDMyYjVkNCIsImlhdCI6MTYyNjcwOTAzNH0.wlMz_dk3Mt69bb2Xw2XNmn-d1T7Q3oa5PvJ_0nrMM-I ### JsonWebTokenError: invalid token
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZjU5NWExM2E2YzJiMGY3NDMyYjVkNCIsImlhdCI6MTYyNjcwOTAzNH0.wlMz_dk3Mt69bb2Xw2XNmn-d1T7Q3oa5PvJ_0nrMM-I

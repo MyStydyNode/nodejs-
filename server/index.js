@@ -2,6 +2,9 @@ const { User } = require('./models')
 
 const express = require('express')
 
+// 生成token
+const jwt = require('jsonwebtoken')
+
 const SECRET = 'sdadasdsd343424234gffgf'
 
 const app = express()
@@ -54,8 +57,7 @@ app.post('/api/login', async (req, res) => {
     })
   }
   // res.send(user)
-  // 生成token
-  const jwt = require('jsonwebtoken')
+
   /**
    * 进行签名
    * payload 表示进行操作的数据是什么,secretOrPrivateKey 表示密钥
@@ -70,6 +72,30 @@ app.post('/api/login', async (req, res) => {
     user,
     token,
   })
+})
+
+
+// express 的中间键
+const auth = async (req, res, next) => {
+  const raw = String(req.headers.authorization).split(' ').pop()
+  const { id } = jwt.verify(raw, SECRET)
+  // 找到用户
+  req.user = await User.findById(id)
+  // next 表示接下来要执行什么东西
+  next()
+}
+
+
+// 获取用户个人信息
+// app.get('/api/profile', async (req, res) => {
+//   const raw = String(req.headers.authorization).split(' ').pop()
+//   const { id } = jwt.verify(raw, SECRET)
+//   // 找到用户
+//   const user = await User.findById(id)
+//   return res.send(user)
+// })
+app.get('/api/profile', auth, async (req, res) => {
+  return res.send(req.user)
 })
 
 // app.delete('/api/register/:id', async (req, res) => {
